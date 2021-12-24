@@ -18,7 +18,6 @@ export class Cascading extends Component {
     var config = {
       method: "get",
       url: "https://react-task-api.herokuapp.com/api/schools",
-      headers: {},
     };
 
     axios(config)
@@ -40,18 +39,13 @@ export class Cascading extends Component {
     });
     this.state.SchoolId = e.target.value;
     if (this.state.SchoolId) {
-      let data = JSON.stringify({
-        schoolId: "61c38c844b3925f593e9505c",
-      });
       var config = {
         method: "get",
         url:
           "https://react-task-api.herokuapp.com/api/classes/" +
           this.state.SchoolId,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: data,
+
+        
       };
       axios(config)
         .then((response) => {
@@ -117,6 +111,8 @@ export class Cascading extends Component {
                     />
                   </div>
                   <label className="form-label">Schools</label>
+
+
                   <select
                     className="form-control"
                     name="school"
@@ -145,6 +141,9 @@ export class Cascading extends Component {
                       );
                     })}
                   </select>{" "}
+
+
+                  
                   <br></br>
                   <div className="form-outline mb-4">
                     <label className="form-label">Password</label>
