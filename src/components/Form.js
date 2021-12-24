@@ -44,19 +44,19 @@ export class Form extends Component{
           });
           var config = {
             method: 'get',
-            url: 'https://react-task-api.herokuapp.com/api/classes',
-            headers: { 
-              'Content-Type': 'application/json'
-            },
-            data : data
+            url: 'https://react-task-api.herokuapp.com/api/classes/'+this.state.SchoolId,
+
+            headers: { },
           };
+          
           axios(config)
-          .then(response => {
-            this.setState({
-                Classes: response.data,
-            });
+          .then(function (response) {
             console.log(JSON.stringify(response.data));
-            }).catch(function (error) {
+            
+          }).then((data) => {
+            this.setState({ classes: data })
+        })
+          .catch(function (error) {
             console.log(error);
           });
         }
@@ -84,25 +84,25 @@ export class Form extends Component{
    >
     <form>
     
-    <div class="row mb-4">
-    <div class="col">
-      <div class="form-outline">
-      <label class="form-label" for="fname">First name</label>
-        <input type="text" id="fname" class="form-control" />
+    <div className="row mb-4">
+    <div className="col">
+      <div className="form-outline">
+      <label className="form-label">First name</label>
+        <input type="text" id="fname" className="form-control" />
    
       </div>
     </div>
-    <div class="col">
-      <div class="form-outline">
-      <label class="form-label" for="lname">Last name</label>
-        <input type="text" id="lname" class="form-control" />
+    <div className="col">
+      <div className="form-outline">
+      <label className="form-label">Last name</label>
+        <input type="text" id="lname" className="form-control" />
       
       </div>
     </div>
   </div>
 
       <div className="form-outline mb-4">
-      <label className="form-label" for="loginName">Email </label>
+      <label className="form-label">Email </label>
         <input type="email" id="loginName" className="form-control" />
        
       </div>
@@ -117,7 +117,7 @@ export class Form extends Component{
 
 
     <div className="form-outline mb-4">
-                      <label className="form-label" for="loginName">Classes</label>
+                      <label className="form-label">Classes</label>
     <select className="form-control slct" name="class"  >  
     <option>Class Name</option>
     {this.state.Classes.map((e, key) => { 
@@ -126,9 +126,9 @@ export class Form extends Component{
     </select> 
     </div>
 
-             <div class="form-outline mb-4">
-         <label class="form-label" for="loginPassword">Password</label>
-         <input type="password" id="loginPassword" class="form-control" />
+             <div className="form-outline mb-4">
+         <label className="form-label">Password</label>
+         <input type="password" id="loginPassword" className="form-control" />
     
        </div>
     
@@ -157,126 +157,5 @@ export class Form extends Component{
     }  
     }  
     export default Form 
-// const Schools = ({ schools,classes }) =>  {
-//     const [show, setShow] = useState(true);
-    
-//   return (
-//     <div className="container" >
-
-//    <div className="row">
-//    <div className="col-sm-6"> 
-// <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist" style={{marginTop:"20px"}}>
-//   <li className="nav-item" role="presentation">
-//     <a onClick={() => setShow((s) => !s)}
-//       className="nav-link text-white "
-//       id="tab-login"
-//       data-mdb-toggle="pill"
-//       href="#pills-login"
-//       role="tab"
-//       aria-controls="pills-login"
-//       aria-selected="true"
-//       style={{backgroundColor:"orange", width:"200px", borderRadius:"25px"}}
-//       >Hide/Show</a>
-
-//   </li>
-//   {/* <li className="nav-item" role="presentation">
-//     <a onClick={() => setShow((s) => !s)}
-//       className="nav-link text-dark"
-//       id="tab-register"
-//       data-mdb-toggle="pill"
-//       href="#pills-register"
-//       role="tab"
-//       aria-controls="pills-register"
-//       aria-selected="false"
-//       >Sign in</a>
-//   </li> */}
-// </ul>
-
-
-// <div className="tab-content" style={{ display: show ? "block" : "none" }}>
-//   <div
-//     className="tab-pane fade show active"
-//     id="pills-login"
-//     role="tabpanel"
-//     aria-labelledby="tab-login"
-//   >
-//     <form>
-    
-//     <div class="row mb-4">
-//     <div class="col">
-//       <div class="form-outline">
-//       <label class="form-label" for="fname">First name</label>
-//         <input type="text" id="fname" class="form-control" />
-   
-//       </div>
-//     </div>
-//     <div class="col">
-//       <div class="form-outline">
-//       <label class="form-label" for="lname">Last name</label>
-//         <input type="text" id="lname" class="form-control" />
-      
-//       </div>
-//     </div>
-//   </div>
-
-//       <div className="form-outline mb-4">
-//       <label className="form-label" for="loginName">Email </label>
-//         <input type="email" id="loginName" className="form-control" />
-       
-//       </div>
-
-//       <select className="form-control" name="school" value={this.state.SchoolId} onChange={this.ChangeteState}  >  
-// <option>School Name</option>
-
-// {this.state.Schools.map((e, key) => {  
-// return <option key={key} value={e._id}>{e.name}</option>;  
-// })}  
-// </select>
-
-
-
-//                      <div className="form-outline mb-4">
-//                      <label className="form-label" for="loginName">Classes</label>
-//                      <select className="form-control slct" name="class"  >  
-// <option>Class Name</option>
-// {this.state.Classes.map((e, key) => { 
-// return <option key={key} value={e.id}>{e.name}</option>;  
-// })}  
-// </select>
-//                  </div>
-
-//         <div class="form-outline mb-4">
-//         <label class="form-label" for="loginPassword">Password</label>
-//         <input type="password" id="loginPassword" class="form-control" />
-    
-//       </div>
-        
-
-     
-
-    
-//       <button type="submit" className="btn btn-primary btn-block mb-3">Sign up</button>
-
-      
-      
-//     </form>
-//   </div>
-
-// </div>
-// </div>
-
-
-// <div className="col-sm-6" style={{ display: show ? "block" : "none" }}> 
-
-// <img src={color}/>
-// </div>
-
-// </div>
-
-//     </div>
-//   );
-// }
-
-// export default Schools ;
 
 

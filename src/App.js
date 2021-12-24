@@ -9,8 +9,8 @@ class App extends Component  {
   render(){
   return (
     <div className="App">
-      {/* <Cascading/> */}
-     <Form schools={this.state.schools} classes={this.state.classes}/>
+      <Cascading/>
+     {/* <Form schools={this.state.schools} classes={this.state.classes}/> */}
      <Signin />
     </div>
   );
@@ -55,25 +55,15 @@ var data = JSON.stringify({
       
       var config = {
         method: 'get',
-        url: 'https://react-task-api.herokuapp.com/api/classes',
-        params : {
-          "schoolId":"61b605e10559dd4a4d5bb0ea"
-        },
+        url: 'https://react-task-api.herokuapp.com/api/classes/',
         headers: { 
           'Content-Type': 'application/json'
         }
       };
       
       axios({
-        method: 'get',
-                    url: 'https://react-task-api.herokuapp.com/api/classes',
-                    headers: { 'Content-Type': 'application/json' },
-                    data: {
-                      schoolId:"61c38c844b3925f593e9505c"
-                    }
-                    ,body: {
-                      schoolId:'61c38c844b3925f593e9505c'
-                    }
+                    url:'https://react-task-api.herokuapp.com/api/classes/61b605920559dd4a4d5bb0e5',
+                    headers: { 'Content-Type': 'application/json' }
       })
       .then(function (response) {
         console.log(JSON.stringify(response.data));
